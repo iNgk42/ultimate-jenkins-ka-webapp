@@ -1,7 +1,7 @@
-from init_app import app
-from flask import render_template, request
+from flask import Flask, render_template, request
 from models import Task
-from database import task_store
+
+app = Flask(__name__)
 
 @app.route("/")
 def home():
