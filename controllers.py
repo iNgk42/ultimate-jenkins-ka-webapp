@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from models import Task
+from database import task_store
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
@@ -26,6 +27,10 @@ def register_new_task():
         
         #redirect to confirmation page
         flash("Your task have been successfully registered !", "message")
-        return redirect(url_for("home"))
+        return redirect(url_for("list_tasks"))
     else:
         return render_template("register-task.html")
+    
+@app.route("/tasks")
+def list_tasks():
+    return render_template("tasks-list.html", tasks=task_store)
