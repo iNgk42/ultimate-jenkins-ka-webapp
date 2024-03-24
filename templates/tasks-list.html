@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+  
+{% block tab_title %}
+  Tasks list - Siflaweb
+{% endblock %}
+
+{% block page_header %}
+  Siflaweb
+{% endblock %}
+
+{% block page_title %}
+  <h3>Tasks list</h3>
+{% endblock %}
+
+{% block page_content %}
+
+  <a href="/register-task"><button type="button">Add new task</button></a>
+
+  {% for task in tasks %}
+    <p>
+      <span>ID: {{ task.id }}</span><br>
+      <span>Title: {{ task.title }}</span><br>
+      <span>Due date: {{ task.due_date }}</span><br>
+      <span>Description: {{ task.description }}</span><br>
+      <span>Registration date: {{ task.registration_date }}</span>
+    </p>
+  {% endfor %}
+
+{% endblock %}
+
+{% block page_footer %}
+  <span>Copyright 2024.</span>
+  <span>NgkCorp</span>
+{% endblock %}
