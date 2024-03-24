@@ -1,5 +1,6 @@
 # Logique metier de l'application
 from database import task_store
+from datetime import date
 
 class Task:
     def __init__(self, task_id, task_title, task_description, task_due_date, task_registration_date):
@@ -16,6 +17,12 @@ class Task:
 
     #register new task to the system or db
     def register(self):
+        if task_store == []:
+            self.id = 0
+        else:
+            self.id = task_store[-1].id + 1
+
+        self.registration_date = date.today().strftime("%d/%m/%y")
         task_store.append(self)
 
     #delete existing task to the system or db
